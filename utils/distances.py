@@ -1,8 +1,12 @@
-def manhattan (point1, point2):
-    d_x = abs(point2[0] - point1[0])
-    d_y = abs(point2[1] - point1[1])
-    return d_x + d_y
+def minkowski(a, b, p):
+    d_x = b[0] - a[0]
+    d_y = b[1] - a[1]
+    return (abs(d_x)**p + abs(d_y)**p) ** (1/p)
+
+
+def manhattan(a, b):
+    return minkowski(a, b, 1)
 
 
 def euclidean(a, b):
-    return ((b[0] - a[0])**2 + (b[1] - a[1])**2) ** 0.5
+    return minkowski(a, b, 2)
